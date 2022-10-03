@@ -1,0 +1,12 @@
+.signIn-Form{
+    display: flex;
+    flex-direction:column;
+    width : 450px;
+    h2{
+        margin:10px 0;
+    }
+}
+.button-contain{
+    display: flex;
+    justify-content: space-evenly;
+}
