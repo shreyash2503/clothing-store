@@ -39,7 +39,6 @@ export const Catergory = () => {
   ]
 
   return (
-
     <div className="categories-container">
       <div className="directory-container">
         {categories.map((category) => {
