@@ -4,19 +4,25 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './context/user.context';
-import { ProductProvider } from './context/product.context';
 import { CartDropdownProvider } from './context/cart-dropdown.context';
+import { CategoriesProvider } from './context/categories.context';
+
+
+
+// !Category preview is same as dynamic Shop -----> Please Note
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter >
       <UserProvider>
-        <ProductProvider>
+        <CategoriesProvider>
           <CartDropdownProvider>
             <App />
           </CartDropdownProvider>
-        </ProductProvider>
+        </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>

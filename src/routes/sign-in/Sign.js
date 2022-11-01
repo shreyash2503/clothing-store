@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import FormInput from '../../form-input.component';
 import { signIn } from '../../utils/firebase/firebase.utils';
 import './sign.styles.scss'
-import Button from '../../Button.component';
+import { Button, BUTTON_TYPE_CLASSES } from '../../Button.component';
 import { createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
 const defaultFields = {
     email: "",
@@ -52,7 +52,7 @@ const Sign = ({ googleSignIn }) => {
                 <FormInput label='Password' type='password' required onChange={handleChange} name="password" value={password} />
                 <div className='button-contain'>
                     <Button type="submit" >Sign In</Button>
-                    <Button type='button' onClick={googleSignIn} buttonType="google">Sign In With Google</Button>
+                    <Button type='button' onClick={googleSignIn} buttonType={BUTTON_TYPE_CLASSES.google}>Sign In With Google</Button>
                 </div>
             </form>
         </div>
