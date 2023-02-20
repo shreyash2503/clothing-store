@@ -5,11 +5,29 @@ import SignIn from './routes/sign-in/sign-in.component';
 import Shop from './routes/shop/shop.component';
 import Checkout from './checkout.component';
 import DynamicShop from './dynamicShop.component';
-
+import { useEffect } from 'react';
+//& import related to firestore
+import { onAuthStateChangedListener } from './utils/firebase/firebase.utils';
+import { createUserDocumentFromAuth } from './utils/firebase/firebase.utils';
+//&///////////
+//! import related to user redux
+import { setCurrentUser } from './store/user/user.action';
+import { useDispatch } from 'react-redux';
 
 
 const App = () => {
-  console.log("App");
+  const dispatch = useDispatch(); //? --> the value of dipatch never changes
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      console.log(user);
+      if (user) {
+        createUserDocumentFromAuth(user)
+      }
+      dispatch(setCurrentUser(user));
+    });
+    return unsubscribe; //-----> This is an example of a useEffect cleanup function
+
+  }, []);
   return (
     <Routes>
       <Route path='/' element={<Navigation />}>

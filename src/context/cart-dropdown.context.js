@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import { createContext } from "react";
 export const CartDropdownContext = createContext({
     down: false,
@@ -6,6 +6,39 @@ export const CartDropdownContext = createContext({
     cartItems: [],
     setCartItems: () => { }
 });
+//!//////////////////////////////////////////////////////////////
+//& CartReducer functions 
+//? -->
+export const CART_ACTION_TYPES = {
+    TOGGLE_CART_DROPDOWN: 'TOGGLE_CART_DROPDOWN',
+    ADD_CART_ITEM: 'ADD_CART_ITEM'
+}
+
+const INITIAL_STATE = {
+    cartItems: [],
+    down: false
+}
+const cartReducer = (state, action) => {
+    const { type, payload } = action;
+    console.log('This is the value of state');
+    console.log(state);
+    switch (type) {
+        case CART_ACTION_TYPES.TOGGLE_CART_DROPDOWN:
+            return {
+                ...state,
+                down: payload
+            }
+        case CART_ACTION_TYPES.ADD_CART_ITEM:
+            return {
+                ...state,
+                cartItems: [...payload]
+            }
+        default:
+            throw new Error(`Unhandled event for type ${type} in cartReducer`);
+    }
+}
+//!////////////////////////////////////////////////////////////////
+
 
 const addCartItem = (cartItems, productToAdd) => {
     const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id);
@@ -40,8 +73,22 @@ const clearCart = (cartItems, productToClear) => {
 
 
 export const CartDropdownProvider = ({ children }) => {
-    const [down, setdown] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
+    //&Before using reducers we make use of useState
+    //!const [down, setdown] = useState(false);
+    //!const [cartItems, setCartItems] = useState([]);
+
+    const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE)
+    const { down, cartItems } = state;
+
+    //*---->    //?  Defining the set functions for the reducers functiions;<------
+    const setCartItems = (cartItems) => {
+        dispatch({ type: CART_ACTION_TYPES.ADD_CART_ITEM, payload: cartItems });
+    }
+    const setdown = (down) => {
+        dispatch({ type: CART_ACTION_TYPES.TOGGLE_CART_DROPDOWN, payload: down });
+    }
+    //*---->   //? End of the set of functions<--------
+
     const addItemToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems, productToAdd));
     }
