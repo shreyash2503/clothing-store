@@ -16,7 +16,6 @@ const Shop = () => {
     const dispatch = useDispatch();
     const isLoading = useSelector(selectCategoriesIsLoading);
     useEffect(() => {
-
         // const categoryArray = await getCategoriesAndDocuments();
         // console.log(categoryArray);
         //setCategories(categoryMap);

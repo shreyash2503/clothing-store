@@ -1,6 +1,5 @@
 import { SpinnerContainer, SpinnerOverlay } from "./spinner.styles";
 
-
 const Spinner = () => {
     console.log('spinner rendered');
 

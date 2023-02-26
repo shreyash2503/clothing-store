@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import React from 'react'
 //import { useContext } from 'react';
 import { addItemToCart } from './store/cart/cart.action';
-import { selectCartItems } from './store/cart/cart.selector';
+import { selectCartItems } from './store/cart/cart.selector'
+
 
 export const ProductCard = ({ product }) => {
     //const { addItemToCart } = useContext(CartDropdownContext);

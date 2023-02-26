@@ -45,6 +45,4 @@ export const clearItemFromCart = (cartItems, productToClear) => { // remove the 
 export const removeItemFromCart = (cartItems, productToRemove) => {
     const newCartItems = removeCartItem(cartItems, productToRemove);
     return { type: CART_ACTION_TYPES.ADD_CART_ITEM, payload: newCartItems }
-
-
 }

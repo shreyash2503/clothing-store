@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { auth, SignInWithGooglePopup, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils.js';
 import { createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils.js';
 import { useEffect } from 'react';
