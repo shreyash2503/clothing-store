@@ -3,7 +3,8 @@ import FormInput from '../../form-input.component';
 import { signIn } from '../../utils/firebase/firebase.utils';
 import './sign.styles.scss'
 import { Button, BUTTON_TYPE_CLASSES } from '../../Button.component';
-import { createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
+import { emailSignInStart } from '../../store/user/user.action';
+import { useDispatch } from 'react-redux';
 const defaultFields = {
     email: "",
     password: "",
@@ -12,6 +13,7 @@ const defaultFields = {
 }
 
 const Sign = ({ googleSignIn }) => {
+    const dispatch = useDispatch();
     const [fields, setFields] = useState(defaultFields)
     const { email, password, displayName } = fields;
     console.log(`Hey you called me agian::`);
@@ -26,9 +28,7 @@ const Sign = ({ googleSignIn }) => {
         }
         else {
             try {
-                const { user } = await signIn(email, password);
-                console.log(user);
-                await createUserDocumentFromAuth(user, { displayName })
+                dispatch(emailSignInStart(email, password))
                 console.log(`This is the user data from Sign.js`);
                 setFields(defaultFields);
             }

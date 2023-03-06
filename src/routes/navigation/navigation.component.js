@@ -7,18 +7,22 @@ import { signOutUser } from '../../utils/firebase/firebase.utils';
 import CartIcon from '../../cart-icon.component';
 import CartDropdown from '../../cart-dropdown.component';
 //import { CartDropdownContext } from '../../context/cart-dropdown.context';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentUser } from '../../store/user/user.selector';
 import { selectIsCartOpen } from '../../store/cart/cart.selector';
+import { signOutStart } from '../../store/user/user.action';
+
 
 
 const Navigation = () => {
+    const dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser)
     //const { currentUser } = useContext(UserContext);
     //const { down } = useContext(CartDropdownContext);
     const down = useSelector(selectIsCartOpen);
-    const signOutHandler = async () => {
-        await signOutUser();
+    const signOutHandler = () => {
+        dispatch(signOutStart());
+
     }
     return (
         <Fragment>

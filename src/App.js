@@ -7,25 +7,30 @@ import Checkout from './checkout.component';
 import DynamicShop from './dynamicShop.component';
 import { useEffect } from 'react';
 //& import related to firestore
-import { onAuthStateChangedListener } from './utils/firebase/firebase.utils';
-import { createUserDocumentFromAuth } from './utils/firebase/firebase.utils';
 //&///////////
 //! import related to user redux
-import { setCurrentUser } from './store/user/user.action';
 import { useDispatch } from 'react-redux';
+import { checkUserSession } from './store/user/user.action';
 
 
 const App = () => {
   const dispatch = useDispatch(); //? --> the value of dipatch never changes
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
-      console.log(user);
-      if (user) {
-        createUserDocumentFromAuth(user)
-      }
-      dispatch(setCurrentUser(user));
-    });
-    return unsubscribe; //-----> This is an example of a useEffect cleanup function
+    // const unsubscribe = onAuthStateChangedListener((user) => {
+    //   console.log(user);
+    //   if (user) {
+    //     createUserDocumentFromAuth(user)
+    //   }
+    //   dispatch(setCurrentUser(user));
+    // });
+    // return unsubscribe; //-----> This is an example of a useEffect cleanup function
+
+    // * This is different way to do the above using sagas
+    //getCurrentUser().then((user) => console.log(user));
+    // * Proper saga implementation
+
+    dispatch(checkUserSession());
+
 
   }, []);
   return (

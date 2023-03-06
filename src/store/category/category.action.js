@@ -5,6 +5,9 @@ export const fetchCategoriesStart = () => ({ type: CATEGORY_ACTION_TYPES.FETCH_C
 export const fetchCategoriesSuccess = (categoriesArray) => ({ type: CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS, payload: categoriesArray })
 export const fetchCategoriesFail = (error) => ({ type: CATEGORY_ACTION_TYPES.FETCH_CATEGORIES_FAIL, payload: error })
 
+
+
+// * This is the code for redux thunk
 // export const fetchCategoriesAsync = async (dispatch) => {
 //     dispatch(fetchCategoriesStart());
 

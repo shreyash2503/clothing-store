@@ -1,5 +1,4 @@
 import React from 'react';
-import { useContext } from 'react';
 import './checkout-item.styles.scss';
 //import { CartDropdownContext } from './context/cart-dropdown.context';
 import { useDispatch, useSelector } from 'react-redux';
