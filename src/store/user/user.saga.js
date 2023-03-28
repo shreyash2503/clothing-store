@@ -16,7 +16,7 @@ export function* getSnapShotFromUserAuth(userAuth, additionalDetails) {
 }
 
 
-
+///// ------------------------
 
 export function* isUserAuthenticated() {
     try {
@@ -50,7 +50,6 @@ export function* signInWithEmail({ payload: { email, password } }) {
         yield call(getSnapShotFromUserAuth, user);
     } catch (error) {
         yield put(signInFailed(error));
-
     }
 
 }

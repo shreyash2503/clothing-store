@@ -1,11 +1,11 @@
 import React from 'react'
-import { ShoppingIcon, CartIconContainer, ItemCount } from './cart-icon.styles.jsx';
+import { ShoppingIcon, CartIconContainer, ItemCount } from './cart-icon.styles';
 //import { CartDropdownContext } from './context/cart-dropdown.context';
 import { useSelector } from 'react-redux';
 //import { useContext } from 'react';
-import { selectCartItems, selectIsCartOpen } from './store/cart/cart.selector.js';
+import { selectCartItems, selectIsCartOpen } from './store/cart/cart.selector';
 import { useDispatch } from 'react-redux';
-import { setIsCartOpen } from './store/cart/cart.action.js';
+import { setIsCartOpen } from './store/cart/cart.action';
 
 const CartIcon = () => {
     //const { down, setdown, cartItems } = useContext(CartDropdownContext);

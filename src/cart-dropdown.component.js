@@ -11,6 +11,7 @@ import { selectCartItems, } from './store/cart/cart.selector';
 const CartDropdown = () => {
     //const { cartItems } = useContext(CartDropdownContext);
     const cartItems = useSelector(selectCartItems);
+    console.log(cartItems);
     const navigate = useNavigate();
     const goToCheckoutHandler = () => {
         navigate('/checkout');
@@ -20,7 +21,7 @@ const CartDropdown = () => {
             <div className='cart-items'>
                 {
                     cartItems.length ?
-                        (cartItems.map((item) => {
+                        (cartItems && cartItems.map((item) => {
                             return (<CartItem key={item.id} cartItem={item} />
                             )
                         })) : (<span className='empty-message'>Your Cart is Empty</span>)
