@@ -2,18 +2,15 @@
 //     TOGGLE_CART_DROPDOWN: 'TOGGLE_CART_DROPDOWN',
 //     ADD_CART_ITEM: 'ADD_CART_ITEM'
 // }
+import { CategoryItem } from "../category/category.types";
 
 export enum CART_ACTION_TYPES {
-  TOGGLE_CART_DROPDOWN = "cart/TOGGLE_CART_DROPDOWN",
-  ADD_CART_ITEM = "cart/ADD_CART_ITEM",
-  REMOVE_CART_ITEM = "cart/REMOVE_CART_ITEM",
-  CLEAR_CART_ITEM = "cart/CLEAR_CART_ITEM",
+  SET_IS_CART_OPEN = "cart/SET_IS_CART_OPEN",
+  SET_CART_ITEMS = "cart/SET_CART_ITEMS",
+  SET_CART_TOTAL = "cart/SET_CART_TOTAL",
+  SET_CART_COUNT = "cart/SET_CART_COUNT",
 }
 
-export type CartItem = {
-  id: number;
-  imageUrl: string;
-  name: string;
-  price: number;
+export type CartItem = CategoryItem & {
   quantity: number;
 };
