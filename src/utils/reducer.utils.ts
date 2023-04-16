@@ -12,6 +12,7 @@ import { AnyAction } from "redux";
 // This is useful because it allows you to write code like this:
 // What is the purpose of the code below?
 // The purpose of the code below is to check if the action is of the same type as the action creator
+
 type Matchable<AC extends () => AnyAction> = AC & {
   type: ReturnType<AC>["type"];
   match(action: AnyAction): action is ReturnType<AC>;
@@ -20,6 +21,7 @@ type Matchable<AC extends () => AnyAction> = AC & {
 export function withMatcher<AC extends () => AnyAction & { type: string }>(
   actionCreator: AC
 ): Matchable<AC>;
+
 export function withMatcher<
   AC extends (...args: any[]) => AnyAction & { type: string }
 >(actionCreator: AC): Matchable<AC>;
