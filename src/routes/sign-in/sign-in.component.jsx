@@ -1,7 +1,7 @@
 import React from 'react';
 import { auth, signInWithGoogleRedirect } from '../../utils/firebase/firebase.utils';
 import { createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
-import { onGoogleSignInStart } from '../../store/user/user.saga.js';
+import { onGoogleSignInStart } from '../../store/user/user.saga';
 import { useEffect } from 'react';
 import { getRedirectResult } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
