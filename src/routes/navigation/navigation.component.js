@@ -36,7 +36,6 @@ const Navigation = () => {
                     </NavLink >
                     {currentUser ? <NavLink as='span' onClick={signOutHandler}>SIGN OUT</NavLink> :
                         (<NavLink className='nav-link' to='/signIn'>SIGN IN</NavLink>)}
-
                     <CartIcon />
                 </NavLinksContainer>
                 {down && <CartDropdown />}
